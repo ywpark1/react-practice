@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import classes from './Cockpit.css';
+// import Aux from '../hoc/Aux.js';
 
 const cockpit = props => {
   const assignedClasses = [];
-  let btnClass = null;
+  let btnClass = classes.Button;
 
   if (props.showPersons) {
-    btnClass = classes.Red;
+    btnClass = [classes.Button, classes.Red].join(' ');
   }
 
   if (props.persons.length <= 2) {
@@ -18,13 +19,13 @@ const cockpit = props => {
   }
 
   return (
-    <div className={classes.Cockpit}>
+    <Fragment>
       <h1>Hello World!!</h1>
       <p className={assignedClasses.join(' ')}>This is really working!!!</p>
       <button className={btnClass} onClick={props.clicked}>
         {!props.showPersons ? 'Show People' : 'Hide People'}
       </button>
-    </div>
+    </Fragment>
   );
 };
 

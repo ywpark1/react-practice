@@ -25,6 +25,7 @@ const cockpit = props => {
       <button className={btnClass} onClick={props.clicked}>
         {!props.showPersons ? 'Show People' : 'Hide People'}
       </button>
+      <button onClick={props.login}>Log in</button>
     </Fragment>
   );
 };

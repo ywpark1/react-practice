@@ -27,6 +27,32 @@ class App extends Component {
     console.log('[App.js] Inside componentDidMount()');
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log(
+      '[UPDATE App.js] Inside shouldComponentUpdate(nextProps, nextState)',
+      nextProps,
+      nextState
+    );
+
+    // return true;
+    return (
+      nextState.persons !== this.state.persons ||
+      nextState.showPersons !== this.state.showPersons
+    );
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    console.log(
+      '[UPDATE App.js] Inside componentWillUpdate(nextProps, nextState)',
+      nextProps,
+      nextState
+    );
+  }
+
+  componentDidUpdate() {
+    console.log('[UPDATE App.js] Inside componentDidUpdate()');
+  }
+
   // Newer version of setting state
   //   state = {
   //     persons: [
@@ -101,6 +127,13 @@ class App extends Component {
 
     return (
       <div className={classes.App}>
+        <button
+          onClick={() => {
+            this.setState({ showPersons: true });
+          }}
+        >
+          Show Persons
+        </button>
         <Cockpit
           showPersons={this.state.showPersons}
           persons={this.state.persons}

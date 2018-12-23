@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import classes from './App.css';
-import Persons from '../components/Persons/Persons';
-import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../components/hoc/WithClass';
+import Persons from '../Persons/Persons';
+import Cockpit from '../Cockpit/Cockpit';
+import withClass from '../hoc/WithClass';
 
 class App extends PureComponent {
   constructor(props) {
@@ -127,7 +127,8 @@ class App extends PureComponent {
     }
 
     return (
-      <WithClass classes={classes.App}>
+      //   <WithClass classes={classes.App}>
+      <Fragment>
         <button
           onClick={() => {
             this.setState({ showPersons: true });
@@ -141,9 +142,11 @@ class App extends PureComponent {
           clicked={this.togglePersonsHandler}
         />
         {persons}
-      </WithClass>
+      </Fragment>
+      //   </WithClass>
     );
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
+// export default App;

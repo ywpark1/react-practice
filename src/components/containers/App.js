@@ -24,9 +24,9 @@ class App extends PureComponent {
     };
   }
 
-  componentWillMount() {
-    console.log('[App.js] Inside componentWillMount()');
-  }
+  //   componentWillMount() {
+  //     console.log('[App.js] Inside componentWillMount()');
+  //   }
 
   componentDidMount() {
     console.log('[App.js] Inside componentDidMount()');
@@ -46,12 +46,30 @@ class App extends PureComponent {
   //     );
   //   }
 
-  componentWillUpdate(nextProps, nextState) {
+  //   componentWillUpdate(nextProps, nextState) {
+  //     console.log(
+  //       '[UPDATE App.js] Inside componentWillUpdate(nextProps, nextState)',
+  //       nextProps,
+  //       nextState
+  //     );
+  //   }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
     console.log(
-      '[UPDATE App.js] Inside componentWillUpdate(nextProps, nextState)',
+      '[UPDATE App.js] Inside getDerivedStateFromProps(nextProps, nextState)',
       nextProps,
-      nextState
+      prevState
     );
+
+    return prevState;
+  }
+
+  getSnapshotBeforeUpdate() {
+    console.log(
+      '[UPDATE App.js] Inside getSnapshotBeforeUpdate(nextProps, nextState)'
+    );
+
+    return null;
   }
 
   componentDidUpdate() {
